@@ -35,6 +35,11 @@ function toggleTheme() {
             About
           </router-link>
         </li>
+        <li>
+          <router-link :to="{ name: 'Posts' }" class="btn text-success lighten-30 selectable text-uppercase">
+            Posts
+          </router-link>
+        </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <div>
