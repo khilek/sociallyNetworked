@@ -16,7 +16,7 @@ AppState.posts = posts
 async getPostById(postId){
 AppState.activePost = null
 const response = await api.get(`api/posts/${postId}`)
-logger.log('Getting Blogs', response.data)
+logger.log('Getting Posts By Id', response.data)
 const foundPost = new Post(response.data)
 AppState.activePost = foundPost
 
@@ -52,24 +52,60 @@ AppState.totalPages = response.data.total_pages
 }
 
 
+async createPost(postData){
+const response = await api.post ('api/posts', postData)
+logger.log('Creating Post', response.data)
+// const posts = response.data.posts.map(post => new Post(post))
+const newPost = new Post(response.data)
+AppState.posts.push (newPost)
+  
+}
+
+ /**
+   * Description
+   * @param {Post} postId
+   * @returns {Promise<void>}
+   */
+async likePost(postId){
+  const response = await api.post(`api/posts/${postId}/like`)
+  logger.log('👍', response.data)
+ const indexToUpdate = AppState.likes.findIndex(post=> post.id == postId)
+ AppState.likes.splice(indexToUpdate, 1)
+ AppState.likes.push(response.data)
+
+}
 
 
 
+async getProfilePosts(profileId) {
+  AppState.profilePosts = []
+const response = await api.get(`api/posts?creatorId=${profileId}`)
+logger.log("Getting Posts By Creator Id")
+const posts = response.data.posts.map( post => new Post(post))
+AppState.posts = posts
+}
 
 
 
+async updatePosts(postId){
+  const response = await api.put(`api/posts/${postId}`)
+  logger.log('Updating Post', response.data)
+  const postToUpdate = AppState.posts.findIndex(post => post.id == postId)
+  AppState.posts.splice(postToUpdate, 1)
+
+  AppState.posts.push(new Post(response.data))
+}
 
 
-
-
-
-// async getProfilePosts(profileId) {
-//   // AppState.profilePosts = []
-// const response = await api.get(`api/posts?creatorId=${profileId}`)
-// logger.log("Getting Posts By Creator Id")
-// const posts = response.data.posts.map( post => new Post(post))
-// AppState.activeProfile = posts
-// }
+async destroyPost(postId){
+  const response = await api.delete(`api/posts/${postId}`)
+  logger.log('💣Deleting Post', response.data)
+  const posts = AppState.posts
+  const postIndex = posts.findIndex(post => post.id == postId)
+  if(postIndex == -1) throw new Error ("Couldn't find Index")
+  posts.splice(postIndex, 1)
+  
+  }
 
 
 }

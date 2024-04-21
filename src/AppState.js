@@ -28,4 +28,7 @@ currentPage: 1,
 
 totalPages: Infinity,
 
+/**@type {{Like}[]} */
+likes: []
+
 })
