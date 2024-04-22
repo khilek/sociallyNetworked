@@ -21,7 +21,7 @@ function toggleTheme() {
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+        <!-- <img alt="logo" src="../assets/img/cw-logo.png" height="45" /> -->
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -30,17 +30,24 @@ function toggleTheme() {
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
-        <li>
+        <!-- <li>
           <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
             About
           </router-link>
-        </li>
+        </li> -->
         <li>
           <router-link :to="{ name: 'Posts' }" class="btn text-success lighten-30 selectable text-uppercase">
             Posts
           </router-link>
         </li>
       </ul>
+      <div class="container">
+        <div class="row m-3">
+          <div class="col-12">
+      <SearchBar/>
+    </div>
+    </div>
+    </div>
       <!-- LOGIN COMPONENT HERE -->
       <div>
         <button class="btn text-light" @click="toggleTheme"

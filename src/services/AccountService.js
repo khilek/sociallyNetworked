@@ -12,6 +12,23 @@ class AccountService {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
   }
+
+
+
+
+  async saveAccount(accountData) {
+    const response = await api.put(`/account`, accountData)
+    logger.log('Saving Account', response.data)
+    AppState.account = new Account(response.data)
+  }
+
+
+
+
+
+
+
+
 }
 
 export const accountService = new AccountService()

@@ -59,11 +59,11 @@ onMounted(()=>{
 
 
 <template>
-<section class="row m-3 py-3">
+<!-- <section class="row m-3 py-3">
   <div class="col-8 text-center">
     <SearchBar />
   </div>
-  </section>
+  </section> -->
 
 
 

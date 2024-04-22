@@ -17,6 +17,11 @@ const account = computed(() => AppState.account)
       <h1>Loading... <i class="mdi mdi-loading mdi-spin"></i></h1>
     </div>
   </div>
+  <section class="container">
+  <div class="row">
+    <AccountForm/>
+  </div>
+</section>
 </template>
 
 <style scoped lang="scss">

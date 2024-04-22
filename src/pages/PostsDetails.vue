@@ -37,7 +37,7 @@ try {
 }
 
 
-async function updatePosts() {
+async function updatePosts(postId) {
   try {
     await postsService.updatePosts(route.params.postId)
 
@@ -63,9 +63,9 @@ onMounted(() => {
 
 
 <template>
-
-      <div class="card text-start">
-        <div v-if="activePost" class="card-body row">
+<div class="container">
+      <div class="card text-start mt-3">
+        <div v-if="activePost" class="card-body row ">
           <div class="col-10">
             <RouterLink :to="{name: 'Profile', params:{profileId: activePost.creatorId} }">
               <h4>{{activePost.creator.name}}</h4>
@@ -78,7 +78,9 @@ onMounted(() => {
           </div>
         </div>
       </div>
+    </div>
 
+    <div class="container">
       <form @submit.prevent="updatePosts()" class="row">
       <div class="mb-3 col-12">
       <label for="post-body">Body</label>
@@ -94,6 +96,7 @@ onMounted(() => {
       <button class="btn btn-success w-50">Save <i class="mdi mdi-floppy"></i></button>
     </div>
   </form>
+</div>
 </template>
 
 
