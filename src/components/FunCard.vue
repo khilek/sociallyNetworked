@@ -35,7 +35,6 @@ onBeforeMount(()=>{
   <section class="row">
     <div class="col">
 
-
     </div>
   </section>
 </div>
