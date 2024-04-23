@@ -9,7 +9,7 @@ import { Fun } from "../models/Fun.js";
 
 const funns = computed(()=> AppState.funs)
 
-defineProps({fun: Fun})
+defineProps({fun: {type: Fun, required: true}})
 
 const funs = ref('')
 

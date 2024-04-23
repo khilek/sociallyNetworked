@@ -63,7 +63,7 @@ try {
             <img class="img-fluid creator-img" :src="post.creator.picture" alt="">
           </RouterLink>
             <!-- <h4 class="card-title">{{post.}}</h4> -->
-            <p class="card-text">{{post.body}}</p>
+            <p class="card-text text-center">{{post.body}}</p>
            <button @click="likePost(post.id)" ><i class="mdi mdi-thumb-up-outline"></i></button>
           </div>
           <div class="col-2">
