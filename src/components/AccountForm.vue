@@ -17,7 +17,10 @@ const accountData = ref({
   bio: '',
   github: '',
   linkedin: '',
-  class: ''
+  class: '',
+  graduated: '',
+  resume: ''
+
 
 })
 
@@ -28,6 +31,7 @@ const accountData = ref({
 // })
 
 watch(()=>AppState.account, ()=>{
+
   accountData.value = {...AppState.account} 
   logger.log(accountData.value)
 }, {immediate: true})
@@ -49,13 +53,18 @@ try {
 
 
 <form @submit.prevent="saveAccount()" class="row">
+
     <div class="mb-3 col-4">
       <label for="account-name">Name</label>
       <input v-model="accountData.name" class="form-control" type="text" id="account-name"  minlength="3" required maxlength="25"/>
     </div>
     <div class="mb-3 col-4">
-      <label for="account-email">Email</label>
-      <input v-model="accountData.email" class="form-control" type="text" id="account-email"  minlength="3" required maxlength="25"/>
+      <label for="account-class">Class</label>
+      <input v-model="accountData.class" class="form-control" type="text" id="account-class"  minlength="3" required maxlength="25"/>
+    </div>
+    <div class="mb-3 col-4">
+      <label for="account-graduated">Graduated</label>
+      <input v-model="accountData.graduated" class="form-control" type="text" id="account-graduated"  minlength="3" required maxlength="25"/>
     </div>
     <div class="mb-3 col-4">
       <label for="account-picture">Picture</label>
@@ -72,6 +81,10 @@ try {
     <div class="mb-3 col-4">
       <label for="account-linkedin">LinkedIn</label>
       <input v-model="accountData.linkedin" class="form-control" type="url" id="account-linkedin"  maxlength="500">
+    </div>
+    <div class="mb-3 col-4">
+      <label for="account-resume">Resume</label>
+      <input v-model="accountData.resume" class="form-control" type="url" id="account-resume"  maxlength="500">
     </div>
 
     <div class="mb-3 col-12">

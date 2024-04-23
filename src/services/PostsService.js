@@ -40,6 +40,22 @@ await this.searchPosts()
 
 
 
+
+async changePageWithProfileId(pageNumber, profileId){
+const response = await api.get(`api/posts?creatorId=${profileId}&page=${pageNumber}`)
+logger.log('Changing Pages', response.data)
+const posts = response.data.posts.map(postData => new Post(postData))
+
+AppState.posts = posts
+AppState.currentPage = response.data.page
+AppState.totalPages = response.data.total_pages
+
+
+}
+
+
+
+
 async changePage(pageNumber){
 const response = await api.get(`api/posts?page=${pageNumber}`)
 logger.log('Switching Pages', response.data)

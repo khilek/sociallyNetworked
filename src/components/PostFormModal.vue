@@ -18,14 +18,14 @@ async function createPost() {
 
     await postsService.createPost(editablePostData.value)
 
-    // NOTE form.reset()
+
     editablePostData.value = {
       body: '',
       imgUrl: ''
      
     }
 
-    // NOTE closes Modal after submit
+
     Modal.getOrCreateInstance('#postFormModal').hide()
   }
   catch (error) {

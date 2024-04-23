@@ -3,7 +3,18 @@
 </script>
 
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+
+<div class="container">
+  <section class="row">
+    <div class="col-12 text-center p-3 m-3">
+<h1>Welcome to the Network</h1>
+</div>
+</section>
+</div>
+
+
+
+  <!-- <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
     <div class="home-card p-5 card align-items-center shadow rounded elevation-3">
       <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
         class="rounded-circle">
@@ -11,7 +22,10 @@
         Vue 3 Starter
       </h1>
     </div>
-  </div>
+  </div> -->
+
+<FunCard/>
+
 </template>
 
 <style scoped lang="scss">

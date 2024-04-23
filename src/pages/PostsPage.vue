@@ -112,6 +112,8 @@ onMounted(()=>{
 </div>
 
 <PostFormModal/>
+
+<FunCard/>
 </template>
 
 

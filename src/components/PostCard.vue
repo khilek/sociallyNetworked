@@ -52,27 +52,40 @@ try {
 
 
 <template>
-  <RouterLink :to="{name: 'PostDetails' , params: {postId: post.id}}">
+  <!-- <RouterLink :to="{name: 'PostDetails' , params: {postId: post.id}}"> -->
       <div class="card text-start">
         <div class="card-body  row">
           <div class="col-10 ">
+            <!-- FIXME add like count (length of likeIds)  -->
             
-            <h4>{{post.creator.name}}</h4>
+            <RouterLink :to="{name: 'Profile', params: {profileId: post.creator.id}}">
+              <h4>{{post.creator.name}}</h4>
+            <img class="img-fluid creator-img" :src="post.creator.picture" alt="">
+          </RouterLink>
             <!-- <h4 class="card-title">{{post.}}</h4> -->
             <p class="card-text">{{post.body}}</p>
            <button @click="likePost(post.id)" ><i class="mdi mdi-thumb-up-outline"></i></button>
           </div>
           <div class="col-2">
-            <img class="img-fluid" :src="post.imgUrl" alt="TEST">
+            <img class="img-fluid" :src="post.imgUrl" alt="picture">
+          </div>
+          <div class="text-end">
+
+            Created on: {{ post.createdAt.toLocaleString() }}
           </div>
         </div>
       </div>
       <div class="text-end">
-      <button v-if="post.creatorId == account?.id" @click="destroyPost(post.id)" class="btn btn-outline-danger" title="Full Send!">Demolish</button>
+      <button v-if="post.creatorId == account?.id" @click="destroyPost(post.id)" class="btn btn-outline-danger" title="Full Send!">Delete</button>
     </div>
-      </RouterLink>
+      <!-- </RouterLink> -->
       </template>
 
 <style lang="scss" scoped>
+
+.creator-img{
+  height: 50px;
+  width: 50px;
+}
 
 </style>
