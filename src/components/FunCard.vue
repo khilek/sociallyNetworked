@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onBeforeMount, ref } from "vue";
+import { computed, onBeforeMount, onMounted, ref } from "vue";
 import { funsService } from "../services/FunsService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
@@ -24,7 +24,7 @@ try {
 
 }
 
-onBeforeMount(()=>{
+onMounted(()=>{
   getAds()
 })
 </script>
