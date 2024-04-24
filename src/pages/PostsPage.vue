@@ -5,8 +5,11 @@ import { postsService } from "../services/PostsService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 import { AppState } from "../AppState.js";
+import { funsService } from "../services/FunsService.js";
+import FunCard from "../components/FunCard.vue";
 
  const posts = computed(() => AppState.posts)
+ const funs = computed(()=> AppState.funs)
 
 async function getPosts(){
 try {
@@ -36,6 +39,7 @@ async function changeSearchPage(pageNumber){
     logger.error(error);
   }
 
+}
 
 
 
@@ -48,12 +52,22 @@ async function changeSearchPage(pageNumber){
   }
 }
 
-
+async function getAds(){
+try {
+  await funsService.getAds()
+} catch (error) {
+  Pop.toast("Couldn't get Fun", 'error')
+  logger.error(error)
+}
 
 }
 
+
+
+
 onMounted(()=>{
   getPosts()
+  getAds()
 })
 </script>
 
@@ -100,20 +114,34 @@ onMounted(()=>{
     
     
     <section class="row mb-5">
+      
+<div class="col-2"></div>
+<div class="col-8">
+  <section class="row">
     <div v-for="post in posts" :key="post.id" class="col-12 p-1 mb-1">
- <PostCard :post="post"/>
-
-
+      <PostCard :post="post"/>
     </div>
 
   </section>
+</div>
+<div class="col-2">
+  <section class="row">
+    <div v-for="fun in funs" :key="fun.title" class="col-12">
+      <FunCard :fun="fun"/>
+    </div>
+  </section>
+
+</div>
+
+  </section>
+
 
 
 </div>
 
 <PostFormModal/>
 
-<FunCard/>
+<!-- <FunCard/> -->
 </template>
 
 

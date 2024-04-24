@@ -56,7 +56,6 @@ try {
       <div class="card text-start">
         <div class="card-body  row">
           <div class="col-10 ">
-            <!-- FIXME add like count (length of likeIds)  -->
             
             <RouterLink :to="{name: 'Profile', params: {profileId: post.creator.id}}">
               <h4>{{post.creator.name}}</h4>
@@ -65,6 +64,7 @@ try {
             <!-- <h4 class="card-title">{{post.}}</h4> -->
             <p class="card-text text-center">{{post.body}}</p>
            <button @click="likePost(post.id)" ><i class="mdi mdi-thumb-up-outline"></i></button>
+           {{ post.likeIds.length }}
           </div>
           <div class="col-2">
             <img class="img-fluid" :src="post.imgUrl" alt="picture">
